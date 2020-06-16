@@ -1,1 +1,13 @@
-<p>details works!</p>
+<h1 *ngIf="brewdetails">{{ brewdetails.name }}</h1>
+
+<ul *ngIf="brewdetails">
+  <li >
+    <b>Country:</b> <p class="country">{{ brewdetails.country }}</p>
+    <b>City:</b> <p class="city">{{ brewdetails.city }}</p>
+    <b>State:</b> <p class="state">{{ brewdetails.state }}</p>
+    <b>Street:</b> <p class="street">{{ brewdetails.street }}</p>
+    <b>Phone:</b> <p class="phone">{{ brewdetails.phone }}</p>
+    <b>postal Code:</b> <p class="postalCode">{{ brewdetails.postal_code }}</p>
+    <b>Website:</b> <a class="site" href="{{ brewdetails.website_url }}">Visit their Website</a>
+  </li>
+</ul>

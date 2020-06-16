@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpService} from '../http.service';
 
 @Component({
   selector: 'app-details',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
+  brewdetails: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private activatedRoute: ActivatedRoute, private _http: HttpService) {
   }
 
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this._http.getSpecefikBeer(params.id).subscribe( data => {
+        this.brewdetails = data;
+      });
+    });
+  }
 }

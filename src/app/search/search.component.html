@@ -4,6 +4,6 @@
   <li *ngFor="let brew of brews">
     <p class="name">{{ brew.name }}</p>
     <p class="country">{{ brew.country }}</p>
-    <a class="site" href="{{ brew.website_url }}">site</a>
+    <a class="site" [routerLink]="['/details', brew.id]">Details</a>
   </li>
 </ul>
