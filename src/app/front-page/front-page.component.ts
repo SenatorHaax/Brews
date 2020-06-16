@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../http.service';
 
 @Component({
   selector: 'app-front-page',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./front-page.component.scss']
 })
 export class FrontPageComponent implements OnInit {
+  brews: object;
 
-  constructor() { }
+  constructor(private _http: HttpService) {
+    this._http.getLimitBeer(3).subscribe(data => {
+        this.brews = data;
+        console.log(this.brews);
+      }
+    );
+  }
 
   ngOnInit(): void {
   }
