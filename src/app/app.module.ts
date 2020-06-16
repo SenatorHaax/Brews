@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsComponent } from './details/details.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DetailsComponent } from './details/details.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
