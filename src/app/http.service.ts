@@ -19,5 +19,15 @@ export class HttpService {
       return this.http.get('https://api.openbrewerydb.org/breweries/' + id);
     }
   }
+  getSpecefikBeerSearch(searchText) {
+    if (searchText) {
+      return this.http.get('https://api.openbrewerydb.org/breweries/search?query=' + searchText);
+    }
+  }
+  getSpecefikBeerSearchAuto(searchText) {
+    if (searchText) {
+      return this.http.get('https://api.openbrewerydb.org/breweries/autocomplete?query=' + searchText);
+    }
+  }
 
 }
