@@ -8,29 +8,35 @@ import {HttpService} from '../http.service';
 })
 
 export class SearchComponent implements OnInit {
+  unfilteredbrews: any;
   brews: any;
   searchText: string;
 
 
   constructor(private _http: HttpService) {
+    this._http.getBeer().subscribe(data => {
+        this.unfilteredbrews = data;
+        console.log(this.unfilteredbrews);
+        // filter here
+        this.searchText = '';
+        this.brews = this.removeItems(this.unfilteredbrews, this.searchText);
+      }
+    );
   }
 
-  removeItems(name: string){
-    if (name){
-      this._http.getSpecefikBeerSearch(name).subscribe( data => {
-        this.brews = data;
-      });
+  removeItems(items: any, name: string){
+    for (let i = 0; i < items.length; i++) {
+      if (!items[i].name.toLowerCase().includes(name.toLowerCase())) {
+        items.splice(i--, 1);
+      }
     }
+    return items;
   }
-
   clearSelection(): void {
     window.location.reload();
   }
 
   ngOnInit(): void {
-      this._http.getBeer().subscribe(data => {
-          this.brews = data;
-        }
-      );
   }
+
 }
