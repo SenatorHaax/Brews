@@ -20,14 +20,12 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    // tslint:disable-next-line:variable-name
     private _http: HttpService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
-    this._http.getBeer().subscribe(data => {
-        this.brews = data;
+    this._http.getBeer().subscribe(json => {
+        this.brews = json;
       }
     );
     this.searchBrewCtrl.valueChanges
@@ -48,15 +46,24 @@ export class SearchComponent implements OnInit {
       )
       .subscribe(data => {
         console.log(data);
-        if (data == undefined) {
-          this.errorMsg = 'welp';
-          this.filteredBrews = [];
+        if (data === []) {
+          this._http.getBeer().subscribe(json => {
+              this.filteredBrews = json;
+            }
+          );
         } else {
           this.errorMsg = '';
           this.filteredBrews = data;
         }
-
-        this.brews = this.filteredBrews;
+        console.log();
+        if (this.filteredBrews.length === 0){
+          this._http.getBeer().subscribe(json => {
+              this.brews = json;
+            }
+          );
+        }else{
+          this.brews = this.filteredBrews;
+        }
       });
   }
 }
