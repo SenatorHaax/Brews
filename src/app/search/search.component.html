@@ -1,7 +1,7 @@
 <h1>Breweries</h1>
 <div>
   <label>
-    <input type="text" [(ngModel)]="searchText" (keydown)="removeItems(this.searchText)" placeholder="Søg.." >
+    <input type="text" [(ngModel)]="searchText" (keyup)="removeItems(this.searchText)" placeholder="Søg.." >
   </label>
   <a (click)="clearSelection()">Ryd</a>
 </div>
