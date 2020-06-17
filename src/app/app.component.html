@@ -11,10 +11,56 @@
   </div>
 </header>
 
-<div class="conatiner">
+<div class="main">
   <router-outlet></router-outlet>
 </div>
 
 <footer>
 
+  <form>
+
+    <!-- name -->
+    <div class="field">
+      <input
+        type="text"
+        name="name"
+        class="input"
+        placeholder="Your Name"
+        [(ngModel)]="name"
+        required
+        minlength="3"
+        #nameInput="ngModel">
+    </div>
+
+    <!-- email -->
+    <div class="field">
+      <input
+        type="email"
+        name="email"
+        class="input"
+        placeholder="Your Email"
+        [(ngModel)]="email"
+        required
+        email
+        #emailInput="ngModel">
+    </div>
+
+    <!-- message -->
+    <div class="field">
+    <textarea
+      class="textarea"
+      name="message"
+      placeholder="What's on your mind?"
+      [(ngModel)]="message"
+      required
+      #messageInput="ngModel"></textarea>
+    </div>
+
+    <button type="submit" class="button is-danger is-large">Submit</button>
+
+  </form>
+
+  <div>
+    <p>du kan også kontakte mig på tlf: bla bla bla</p>
+  </div>
 </footer>

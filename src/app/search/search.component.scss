@@ -30,3 +30,24 @@ ul {
     }
   }
 }
+
+.searchField{
+  background: grey;
+  width: 50%;
+  mat-form-field{
+    width: 100%;
+  div{
+    width: 100%;
+    div{
+      width: 100%;
+      div{
+        width: 100%;
+        input{
+          width: 100%;
+        }
+      }
+    }
+  }
+  }
+
+}

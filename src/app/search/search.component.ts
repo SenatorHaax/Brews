@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
   searchBrewCtrl = new FormControl();
   filteredBrews: any;
   isLoading = false;
-  errorMsg: string;
   brews: any;
 
   constructor(
@@ -32,7 +31,6 @@ export class SearchComponent implements OnInit {
       .pipe(
         debounceTime(500),
         tap(() => {
-          this.errorMsg = '';
           this.filteredBrews = [];
           this.isLoading = true;
         }),
@@ -52,10 +50,8 @@ export class SearchComponent implements OnInit {
             }
           );
         } else {
-          this.errorMsg = '';
           this.filteredBrews = data;
         }
-        console.log();
         if (this.filteredBrews.length === 0){
           this._http.getBeer().subscribe(json => {
               this.brews = json;
